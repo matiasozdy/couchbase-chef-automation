@@ -1,0 +1,48 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+Vagrant.configure("2") do |config|
+
+#Lets start the first node
+	config.vm.define "node1" do |node1|
+		node1.vm.box = "hansode/centos-6.6-x86_64"
+		node1.vm.hostname = 'node1'
+		node1.vm.box_url = "hansode/centos-6.6-x86_64"
+		node1.omnibus.chef_version = "12.10.24"  # Cant use :latest cause https://github.com/chef/chef/issues/4948 bug.
+		node1.vm.network "forwarded_port", guest: 8091, host: 8091
+		node1.vm.network "private_network", ip: "192.168.10.10"
+		#Using Chef Solo to avoid using my testing organization
+		node1.vm.provision "chef_solo" do |chef|
+			chef.add_recipe "couchbasenode::configmaster"
+			chef.node_name = "node1"
+		end
+		config.vm.provider "virtualbox" do |v|
+			v.memory = 1512
+        		v.cpus = 1
+		end
+  
+	end
+
+#And the second one, passing the master couchbase node ip	
+	config.vm.define "node2" do |node2|
+		node2.vm.box = "hansode/centos-6.6-x86_64"
+		node2.vm.hostname = 'node2'
+		node2.vm.box_url = "hansode/centos-6.6-x86_64"
+  		node2.omnibus.chef_version = "12.10.24"
+		node2.vm.network "forwarded_port", guest: 8091, host: 8092
+		node2.vm.network "private_network", ip: "192.168.10.11"
+		node2.vm.provision "chef_solo" do |chef|
+			chef.add_recipe "couchbasenode::confignode"
+			chef.node_name = "node2"
+			chef.json = {
+				:couchbasenode => {
+				:master_node => "192.168.10.10"
+ 				}
+			}
+  
+		end
+		config.vm.provider "virtualbox" do |v|
+			v.memory = 1512
+        		v.cpus = 1
+		end
+	end
+end

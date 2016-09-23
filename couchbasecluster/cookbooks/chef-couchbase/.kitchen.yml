@@ -1,0 +1,37 @@
+---
+driver:
+  name: vagrant
+  customize:
+    memory: 2048
+  network:
+    - ["forwarded_port", {guest: 8091, host: 8091}]
+    - ["private_network", {ip: "192.168.10.11"}]
+  vagrantfiles:
+    - test/files/VagrantAdditional.rb
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: centos-6.7
+
+suites:
+  - name: couchbase_server 
+    data_bags_path: test/integration/data_bags
+    run_list:
+      - recipe[couchbase::server]
+      - recipe[test::test_bucket_create]
+    attributes:
+      couchbase:
+        server:
+          memory_quota_mb: 256
+          index_path: /opt/couchbase/var/lib/couchbase/index
+  - name: couchbase_client
+    data_bags_path: test/integration/data_bags
+    run_list:
+      - recipe[couchbase::client]
+    attributes:
+      couchbase:
+        server:
+          memory_quota_mb: 256
+          index_path: /opt/couchbase/var/lib/couchbase/index

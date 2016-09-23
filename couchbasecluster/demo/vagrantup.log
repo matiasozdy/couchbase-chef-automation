@@ -1,0 +1,319 @@
+stuff@StuffBook:~/ryanair/couchbasecluster$ ps -eaf | grep vagrant
+stuff     3622  3869  0 00:35 pts/4    00:00:00 grep --color=auto vagrant
+stuff@StuffBook:~/ryanair/couchbasecluster$ vagrant up
+Bringing machine 'node1' up with 'virtualbox' provider...
+Bringing machine 'node2' up with 'virtualbox' provider...
+==> node1: Importing base box 'hansode/centos-6.6-x86_64'...
+==> node1: Matching MAC address for NAT networking...
+==> node1: Checking if box 'hansode/centos-6.6-x86_64' is up to date...
+==> node1: Setting the name of the VM: couchbasecluster_node1_1470368174188_35603
+==> node1: Clearing any previously set network interfaces...
+==> node1: Preparing network interfaces based on configuration...
+    node1: Adapter 1: nat
+    node1: Adapter 2: hostonly
+==> node1: Forwarding ports...
+    node1: 8091 => 8091 (adapter 1)
+    node1: 22 => 2222 (adapter 1)
+==> node1: Running 'pre-boot' VM customizations...
+==> node1: Booting VM...
+==> node1: Waiting for machine to boot. This may take a few minutes...
+    node1: SSH address: 127.0.0.1:2222
+    node1: SSH username: vagrant
+    node1: SSH auth method: private key
+==> node1: Machine booted and ready!
+==> node1: Checking for guest additions in VM...
+==> node1: Setting hostname...
+==> node1: Configuring and enabling network interfaces...
+==> node1: Mounting shared folders...
+    node1: /vagrant => /home/stuff/ryanair/couchbasecluster
+    node1: /tmp/vagrant-chef-2/chef-solo-1/cookbooks => /home/stuff/ryanair/couchbasecluster/cookbooks
+==> node1: Installing Chef 12.10.24 Omnibus package...
+==> node1: el 6 x86_64
+==> node1: Getting information for chef stable 12.10.24 for el...
+==> node1: downloading https://omnitruck-direct.chef.io/stable/chef/metadata?v=12.10.24&p=el&pv=6&m=x86_64
+==> node1:   to file /tmp/install.sh.2843/metadata.txt
+==> node1: trying wget...
+==> node1: sha1	faec4e0bc2cc236170b400426cd3b51b5657fe90
+==> node1: sha256	445b64e38827d8c787267bda57d2cd6be797b6f6f70eb34ec846eceee8f6fae9
+==> node1: url	https://packages.chef.io/stable/el/6/chef-12.10.24-1.el6.x86_64.rpm
+==> node1: version	12.10.24
+
+==> node1: downloaded metadata file looks valid...
+==> node1: downloading https://packages.chef.io/stable/el/6/chef-12.10.24-1.el6.x86_64.rpm
+==> node1:   to file /tmp/install.sh.2843/chef-12.10.24-1.el6.x86_64.rpm
+==> node1: trying wget...
+==> node1: Comparing checksum with sha256sum...
+==> node1: Installing chef 12.10.24
+==> node1: installing with rpm...
+==> node1: warning: 
+==> node1: /tmp/install.sh.2843/chef-12.10.24-1.el6.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+==> node1: Preparing...                
+==> node1: ##################################################
+
+==> node1: chef                        
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+==> node1: #
+
+==> node1: Thank you for installing Chef!
+==> node1: Running provisioner: chef_solo...
+Generating chef JSON and uploading...
+==> node1: Running chef-solo...
+==> node1: [2016-08-05T12:40:35+09:00] INFO: Forking chef instance to converge...
+==> node1: [2016-08-05T12:40:35+09:00] INFO: *** Chef 12.10.24 ***
+==> node1: [2016-08-05T12:40:35+09:00] INFO: Platform: x86_64-linux
+==> node1: [2016-08-05T12:40:35+09:00] INFO: Chef-client pid: 3227
+==> node1: [2016-08-05T12:40:37+09:00] INFO: Setting the run_list to ["recipe[couchbasenode::configmaster]"] from CLI options
+==> node1: [2016-08-05T12:40:37+09:00] INFO: Run List is [recipe[couchbasenode::configmaster]]
+==> node1: [2016-08-05T12:40:37+09:00] INFO: Run List expands to [couchbasenode::configmaster]
+==> node1: [2016-08-05T12:40:37+09:00] INFO: Starting Chef Run for node1
+==> node1: [2016-08-05T12:40:37+09:00] INFO: Running start handlers
+==> node1: [2016-08-05T12:40:37+09:00] INFO: Start handlers complete.
+==> node1: [2016-08-05T12:40:38+09:00] WARN: Chef::Provider::AptRepository already exists!  Cannot create deprecation class for LWRP provider apt_repository from cookbook apt
+==> node1: [2016-08-05T12:40:38+09:00] WARN: AptRepository already exists!  Deprecation class overwrites Custom resource apt_repository from cookbook apt
+==> node1: [2016-08-05T12:40:39+09:00] WARN: Default value "1" is invalid for property bucket_replicas of resource couchbase_manage_bucket. In Chef 13 this will become an error: Option bucket_replicas must be a kind of [Integer]!  You passed "1".. at /tmp/vagrant-chef-2/chef-solo-1/cookbooks/chef-couchbase/resources/manage_bucket.rb:25:in `class_from_file' at /opt/chef/embedded/lib/ruby/gems/2.1.0/gems/chef-12.10.24/lib/chef/event_dispatch/dispatcher.rb:43:in `call'
+==> node1: [2016-08-05T12:40:39+09:00] WARN: Default value "11211" is invalid for property bucket_port of resource couchbase_manage_bucket. In Chef 13 this will become an error: Option bucket_port must be a kind of [Integer]!  You passed "11211".. at /tmp/vagrant-chef-2/chef-solo-1/cookbooks/chef-couchbase/resources/manage_bucket.rb:29:in `class_from_file' at /opt/chef/embedded/lib/ruby/gems/2.1.0/gems/chef-12.10.24/lib/chef/event_dispatch/dispatcher.rb:43:in `call'
+==> node1: [2016-08-05T12:40:39+09:00] WARN: Default value "1000" is invalid for property stats_interval of resource couchbase_manage_xdcr. In Chef 13 this will become an error: Option stats_interval must be a kind of [Integer]!  You passed "1000".. at /tmp/vagrant-chef-2/chef-solo-1/cookbooks/chef-couchbase/resources/manage_xdcr.rb:43:in `class_from_file' at /opt/chef/embedded/lib/ruby/gems/2.1.0/gems/chef-12.10.24/lib/chef/event_dispatch/dispatcher.rb:43:in `call'
+==> node1: [2016-08-05T12:40:39+09:00] INFO: vagrant ohai plugins will be at: /etc/chef/vagrant_ohai_plugins
+==> node1: [2016-08-05T12:40:39+09:00] INFO: remote_directory[/etc/chef/vagrant_ohai_plugins] created directory /etc/chef/vagrant_ohai_plugins
+==> node1: [2016-08-05T12:40:39+09:00] INFO: remote_directory[/etc/chef/vagrant_ohai_plugins] owner changed to 0
+==> node1: [2016-08-05T12:40:39+09:00] INFO: remote_directory[/etc/chef/vagrant_ohai_plugins] group changed to 0
+==> node1: [2016-08-05T12:40:39+09:00] INFO: remote_directory[/etc/chef/vagrant_ohai_plugins] mode changed to 755
+==> node1: [2016-08-05T12:40:39+09:00] INFO: cookbook_file[/etc/chef/vagrant_ohai_plugins/vagrant-net.rb] created file /etc/chef/vagrant_ohai_plugins/vagrant-net.rb
+==> node1: [2016-08-05T12:40:39+09:00] INFO: cookbook_file[/etc/chef/vagrant_ohai_plugins/vagrant-net.rb] updated file contents /etc/chef/vagrant_ohai_plugins/vagrant-net.rb
+==> node1: [2016-08-05T12:40:39+09:00] INFO: cookbook_file[/etc/chef/vagrant_ohai_plugins/vagrant-net.rb] mode changed to 644
+==> node1: [2016-08-05T12:40:39+09:00] INFO: cookbook_file[/etc/chef/vagrant_ohai_plugins/README.md] created file /etc/chef/vagrant_ohai_plugins/README.md
+==> node1: [2016-08-05T12:40:39+09:00] INFO: cookbook_file[/etc/chef/vagrant_ohai_plugins/README.md] updated file contents /etc/chef/vagrant_ohai_plugins/README.md
+==> node1: [2016-08-05T12:40:39+09:00] INFO: cookbook_file[/etc/chef/vagrant_ohai_plugins/README.md] mode changed to 644
+==> node1: [2016-08-05T12:40:39+09:00] WARN: Ohai::Config[:plugin_path] is set. Ohai::Config[:plugin_path] is deprecated and will be removed in future releases of ohai. Use ohai.plugin_path in your configuration file to configure :plugin_path for ohai.
+==> node1: [2016-08-05T12:40:39+09:00] WARN: Ohai::Config[:plugin_path] is set. Ohai::Config[:plugin_path] is deprecated and will be removed in future releases of ohai. Use ohai.plugin_path in your configuration file to configure :plugin_path for ohai.
+==> node1: [2016-08-05T12:40:39+09:00] WARN: [DEPRECATION] Plugin at /etc/chef/vagrant_ohai_plugins/vagrant-net.rb is a version 6 plugin. Version 6 plugins will not be supported in future releases of Ohai. Please upgrade your plugin to version 7 plugin syntax. For more information visit here: docs.chef.io/ohai_custom.html
+==> node1: [2016-08-05T12:40:41+09:00] INFO: ohai[custom_plugins] reloaded
+==> node1: [2016-08-05T12:40:41+09:00] WARN: Cloning resource attributes for directory[/opt/couchbase/var/lib/couchbase/data] from prior resource (CHEF-3694)
+==> node1: [2016-08-05T12:40:41+09:00] WARN: Previous directory[/opt/couchbase/var/lib/couchbase/data]: /tmp/vagrant-chef-2/chef-solo-1/cookbooks/chef-couchbase/recipes/server.rb:57:in `from_file'
+==> node1: [2016-08-05T12:40:41+09:00] WARN: Current  directory[/opt/couchbase/var/lib/couchbase/data]: /tmp/vagrant-chef-2/chef-solo-1/cookbooks/chef-couchbase/recipes/server.rb:64:in `from_file'
+==> node1: [2016-08-05T12:40:41+09:00] INFO: execute[fixYumrepo] ran successfully
+==> node1: [2016-08-05T12:40:41+09:00] WARN: package file is http://packages.couchbase.com/releases/4.0.0/couchbase-server-community-4.0.0-centos6.x86_64.rpm
+==> node1: [2016-08-05T12:44:48+09:00] INFO: remote_file[/var/chef/cache/couchbase-server-community-4.0.0-centos6.x86_64.rpm] created file /var/chef/cache/couchbase-server-community-4.0.0-centos6.x86_64.rpm
+==> node1: [2016-08-05T12:44:49+09:00] INFO: remote_file[/var/chef/cache/couchbase-server-community-4.0.0-centos6.x86_64.rpm] updated file contents /var/chef/cache/couchbase-server-community-4.0.0-centos6.x86_64.rpm
+==> node1: [2016-08-05T12:44:52+09:00] INFO: rpm_package[/var/chef/cache/couchbase-server-community-4.0.0-centos6.x86_64.rpm] installed /var/chef/cache/couchbase-server-community-4.0.0-centos6.x86_64.rpm at 4.0.0-4051
+==> node1: [2016-08-05T12:44:54+09:00] INFO: service[couchbase-server] started
+==> node1: [2016-08-05T12:44:54+09:00] INFO: directory[/opt/couchbase/var/lib/couchbase/data] created directory /opt/couchbase/var/lib/couchbase/data
+==> node1: [2016-08-05T12:44:54+09:00] INFO: directory[/opt/couchbase/var/lib/couchbase/data] owner changed to 497
+==> node1: [2016-08-05T12:44:54+09:00] INFO: directory[/opt/couchbase/var/lib/couchbase/data] group changed to 497
+==> node1: [2016-08-05T12:44:54+09:00] INFO: directory[/opt/couchbase/var/lib/couchbase/data] mode changed to 755
+==> node1: [2016-08-05T12:45:06+09:00] INFO: execute[node-init set data and index paths] ran successfully
+==> node1: [2016-08-05T12:45:06+09:00] WARN: command is /opt/couchbase/bin/couchbase-cli cluster-init -c 127.0.0.1:8091          -u administrator          -p 1mn0td3f4ult          --cluster-username=administrator          --cluster-password=1mn0td3f4ult          --cluster-ramsize=512            --cluster-index-ramsize=256            --services=data,query,index
+==> node1: [2016-08-05T12:45:06+09:00] INFO: execute[cluster init to initialize server] ran successfully
+==> node1: [2016-08-05T12:45:06+09:00] WARN: res code is 404
+==> node1: [2016-08-05T12:45:07+09:00] INFO: execute[executing bucket-create] ran successfully
+==> node1: [2016-08-05T12:45:07+09:00] INFO: Chef Run complete in 269.448977534 seconds
+==> node1: [2016-08-05T12:45:07+09:00] INFO: Skipping removal of unused files from the cache
+==> node1: [2016-08-05T12:45:07+09:00] INFO: Running report handlers
+==> node1: [2016-08-05T12:45:07+09:00] INFO: Report handlers complete
+==> node2: Importing base box 'hansode/centos-6.6-x86_64'...
+==> node2: Matching MAC address for NAT networking...
+==> node2: Checking if box 'hansode/centos-6.6-x86_64' is up to date...
+==> node2: Setting the name of the VM: couchbasecluster_node2_1470368727784_27756
+==> node2: Fixed port collision for 22 => 2222. Now on port 2200.
+==> node2: Clearing any previously set network interfaces...
+==> node2: Preparing network interfaces based on configuration...
+    node2: Adapter 1: nat
+    node2: Adapter 2: hostonly
+==> node2: Forwarding ports...
+    node2: 8091 => 8092 (adapter 1)
+    node2: 22 => 2200 (adapter 1)
+==> node2: Running 'pre-boot' VM customizations...
+==> node2: Booting VM...
+==> node2: Waiting for machine to boot. This may take a few minutes...
+    node2: SSH address: 127.0.0.1:2200
+    node2: SSH username: vagrant
+    node2: SSH auth method: private key
+==> node2: Machine booted and ready!
+==> node2: Checking for guest additions in VM...
+==> node2: Setting hostname...
+==> node2: Configuring and enabling network interfaces...
+==> node2: Mounting shared folders...
+    node2: /vagrant => /home/stuff/ryanair/couchbasecluster
+    node2: /tmp/vagrant-chef-4/chef-solo-1/cookbooks => /home/stuff/ryanair/couchbasecluster/cookbooks
+==> node2: Installing Chef 12.10.24 Omnibus package...
+==> node2: el 6 x86_64
+==> node2: Getting information for chef stable 12.10.24 for el...
+==> node2: downloading https://omnitruck-direct.chef.io/stable/chef/metadata?v=12.10.24&p=el&pv=6&m=x86_64
+==> node2:   to file /tmp/install.sh.2840/metadata.txt
+==> node2: trying wget...
+==> node2: sha1	faec4e0bc2cc236170b400426cd3b51b5657fe90
+==> node2: sha256	445b64e38827d8c787267bda57d2cd6be797b6f6f70eb34ec846eceee8f6fae9
+==> node2: url	https://packages.chef.io/stable/el/6/chef-12.10.24-1.el6.x86_64.rpm
+==> node2: version	12.10.24
+
+==> node2: downloaded metadata file looks valid...
+==> node2: downloading https://packages.chef.io/stable/el/6/chef-12.10.24-1.el6.x86_64.rpm
+==> node2:   to file /tmp/install.sh.2840/chef-12.10.24-1.el6.x86_64.rpm
+==> node2: trying wget...
+==> node2: Comparing checksum with sha256sum...
+==> node2: Installing chef 12.10.24
+==> node2: installing with rpm...
+==> node2: warning: 
+==> node2: /tmp/install.sh.2840/chef-12.10.24-1.el6.x86_64.rpm: Header V4 DSA/SHA1 Signature, key ID 83ef826a: NOKEY
+==> node2: Preparing...                
+==> node2: ##################################################
+
+==> node2: chef                        
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+==> node2: #
+
+==> node2: Thank you for installing Chef!
+==> node2: Running provisioner: chef_solo...
+Generating chef JSON and uploading...
+==> node2: Running chef-solo...
+==> node2: [2016-08-05T12:50:07+09:00] INFO: Forking chef instance to converge...
+==> node2: [2016-08-05T12:50:07+09:00] INFO: *** Chef 12.10.24 ***
+==> node2: [2016-08-05T12:50:07+09:00] INFO: Platform: x86_64-linux
+==> node2: [2016-08-05T12:50:07+09:00] INFO: Chef-client pid: 3232
+==> node2: [2016-08-05T12:50:09+09:00] INFO: Setting the run_list to ["recipe[couchbasenode::confignode]"] from CLI options
+==> node2: [2016-08-05T12:50:09+09:00] INFO: Run List is [recipe[couchbasenode::confignode]]
+==> node2: [2016-08-05T12:50:09+09:00] INFO: Run List expands to [couchbasenode::confignode]
+==> node2: [2016-08-05T12:50:09+09:00] INFO: Starting Chef Run for node2
+==> node2: [2016-08-05T12:50:09+09:00] INFO: Running start handlers
+==> node2: [2016-08-05T12:50:09+09:00] INFO: Start handlers complete.
+==> node2: [2016-08-05T12:50:10+09:00] WARN: Chef::Provider::AptRepository already exists!  Cannot create deprecation class for LWRP provider apt_repository from cookbook apt
+==> node2: [2016-08-05T12:50:10+09:00] WARN: AptRepository already exists!  Deprecation class overwrites Custom resource apt_repository from cookbook apt
+==> node2: [2016-08-05T12:50:10+09:00] WARN: Default value "1" is invalid for property bucket_replicas of resource couchbase_manage_bucket. In Chef 13 this will become an error: Option bucket_replicas must be a kind of [Integer]!  You passed "1".. at /tmp/vagrant-chef-4/chef-solo-1/cookbooks/chef-couchbase/resources/manage_bucket.rb:25:in `class_from_file' at /opt/chef/embedded/lib/ruby/gems/2.1.0/gems/chef-12.10.24/lib/chef/event_dispatch/dispatcher.rb:43:in `call'
+==> node2: [2016-08-05T12:50:10+09:00] WARN: Default value "11211" is invalid for property bucket_port of resource couchbase_manage_bucket. In Chef 13 this will become an error: Option bucket_port must be a kind of [Integer]!  You passed "11211".. at /tmp/vagrant-chef-4/chef-solo-1/cookbooks/chef-couchbase/resources/manage_bucket.rb:29:in `class_from_file' at /opt/chef/embedded/lib/ruby/gems/2.1.0/gems/chef-12.10.24/lib/chef/event_dispatch/dispatcher.rb:43:in `call'
+==> node2: [2016-08-05T12:50:10+09:00] WARN: Default value "1000" is invalid for property stats_interval of resource couchbase_manage_xdcr. In Chef 13 this will become an error: Option stats_interval must be a kind of [Integer]!  You passed "1000".. at /tmp/vagrant-chef-4/chef-solo-1/cookbooks/chef-couchbase/resources/manage_xdcr.rb:43:in `class_from_file' at /opt/chef/embedded/lib/ruby/gems/2.1.0/gems/chef-12.10.24/lib/chef/event_dispatch/dispatcher.rb:43:in `call'
+==> node2: [2016-08-05T12:50:10+09:00] INFO: vagrant ohai plugins will be at: /etc/chef/vagrant_ohai_plugins
+==> node2: [2016-08-05T12:50:10+09:00] INFO: remote_directory[/etc/chef/vagrant_ohai_plugins] created directory /etc/chef/vagrant_ohai_plugins
+==> node2: [2016-08-05T12:50:10+09:00] INFO: remote_directory[/etc/chef/vagrant_ohai_plugins] owner changed to 0
+==> node2: [2016-08-05T12:50:10+09:00] INFO: remote_directory[/etc/chef/vagrant_ohai_plugins] group changed to 0
+==> node2: [2016-08-05T12:50:10+09:00] INFO: remote_directory[/etc/chef/vagrant_ohai_plugins] mode changed to 755
+==> node2: [2016-08-05T12:50:10+09:00] INFO: cookbook_file[/etc/chef/vagrant_ohai_plugins/vagrant-net.rb] created file /etc/chef/vagrant_ohai_plugins/vagrant-net.rb
+==> node2: [2016-08-05T12:50:10+09:00] INFO: cookbook_file[/etc/chef/vagrant_ohai_plugins/vagrant-net.rb] updated file contents /etc/chef/vagrant_ohai_plugins/vagrant-net.rb
+==> node2: [2016-08-05T12:50:10+09:00] INFO: cookbook_file[/etc/chef/vagrant_ohai_plugins/vagrant-net.rb] mode changed to 644
+==> node2: [2016-08-05T12:50:10+09:00] INFO: cookbook_file[/etc/chef/vagrant_ohai_plugins/README.md] created file /etc/chef/vagrant_ohai_plugins/README.md
+==> node2: [2016-08-05T12:50:10+09:00] INFO: cookbook_file[/etc/chef/vagrant_ohai_plugins/README.md] updated file contents /etc/chef/vagrant_ohai_plugins/README.md
+==> node2: [2016-08-05T12:50:10+09:00] INFO: cookbook_file[/etc/chef/vagrant_ohai_plugins/README.md] mode changed to 644
+==> node2: [2016-08-05T12:50:10+09:00] WARN: Ohai::Config[:plugin_path] is set. Ohai::Config[:plugin_path] is deprecated and will be removed in future releases of ohai. Use ohai.plugin_path in your configuration file to configure :plugin_path for ohai.
+==> node2: [2016-08-05T12:50:10+09:00] WARN: Ohai::Config[:plugin_path] is set. Ohai::Config[:plugin_path] is deprecated and will be removed in future releases of ohai. Use ohai.plugin_path in your configuration file to configure :plugin_path for ohai.
+==> node2: [2016-08-05T12:50:11+09:00] WARN: [DEPRECATION] Plugin at /etc/chef/vagrant_ohai_plugins/vagrant-net.rb is a version 6 plugin. Version 6 plugins will not be supported in future releases of Ohai. Please upgrade your plugin to version 7 plugin syntax. For more information visit here: docs.chef.io/ohai_custom.html
+==> node2: [2016-08-05T12:50:13+09:00] INFO: ohai[custom_plugins] reloaded
+==> node2: [2016-08-05T12:50:13+09:00] WARN: Cloning resource attributes for directory[/opt/couchbase/var/lib/couchbase/data] from prior resource (CHEF-3694)
+==> node2: [2016-08-05T12:50:13+09:00] WARN: Previous directory[/opt/couchbase/var/lib/couchbase/data]: /tmp/vagrant-chef-4/chef-solo-1/cookbooks/chef-couchbase/recipes/server.rb:57:in `from_file'
+==> node2: [2016-08-05T12:50:13+09:00] WARN: Current  directory[/opt/couchbase/var/lib/couchbase/data]: /tmp/vagrant-chef-4/chef-solo-1/cookbooks/chef-couchbase/recipes/server.rb:64:in `from_file'
+==> node2: [2016-08-05T12:50:13+09:00] INFO: execute[fixYumrepo] ran successfully
+==> node2: [2016-08-05T12:50:13+09:00] WARN: package file is http://packages.couchbase.com/releases/4.0.0/couchbase-server-community-4.0.0-centos6.x86_64.rpm
+==> node2: [2016-08-05T12:54:17+09:00] INFO: remote_file[/var/chef/cache/couchbase-server-community-4.0.0-centos6.x86_64.rpm] created file /var/chef/cache/couchbase-server-community-4.0.0-centos6.x86_64.rpm
+==> node2: [2016-08-05T12:54:17+09:00] INFO: remote_file[/var/chef/cache/couchbase-server-community-4.0.0-centos6.x86_64.rpm] updated file contents /var/chef/cache/couchbase-server-community-4.0.0-centos6.x86_64.rpm
+==> node2: [2016-08-05T12:54:22+09:00] INFO: rpm_package[/var/chef/cache/couchbase-server-community-4.0.0-centos6.x86_64.rpm] installed /var/chef/cache/couchbase-server-community-4.0.0-centos6.x86_64.rpm at 4.0.0-4051
+==> node2: [2016-08-05T12:54:23+09:00] INFO: service[couchbase-server] started
+==> node2: [2016-08-05T12:54:23+09:00] INFO: directory[/opt/couchbase/var/lib/couchbase/data] created directory /opt/couchbase/var/lib/couchbase/data
+==> node2: [2016-08-05T12:54:23+09:00] INFO: directory[/opt/couchbase/var/lib/couchbase/data] owner changed to 497
+==> node2: [2016-08-05T12:54:23+09:00] INFO: directory[/opt/couchbase/var/lib/couchbase/data] group changed to 497
+==> node2: [2016-08-05T12:54:23+09:00] INFO: directory[/opt/couchbase/var/lib/couchbase/data] mode changed to 755
+==> node2: [2016-08-05T12:54:36+09:00] INFO: execute[node-init set data and index paths] ran successfully
+==> node2: [2016-08-05T12:54:36+09:00] WARN: command is /opt/couchbase/bin/couchbase-cli cluster-init -c 127.0.0.1:8091          -u administrator          -p 1mn0td3f4ult          --cluster-username=administrator          --cluster-password=1mn0td3f4ult          --cluster-ramsize=512            --cluster-index-ramsize=256            --services=data,query,index
+==> node2: [2016-08-05T12:54:36+09:00] INFO: execute[cluster init to initialize server] ran successfully
+==> node2: [2016-08-05T12:54:36+09:00] WARN: checking if 192.168.10.10 == 192.168.10.11
+==> node2: [2016-08-05T12:54:36+09:00] WARN: joinging cluster wtih /opt/couchbase/bin/couchbase-cli server-add -c 192.168.10.10:8091          -u administrator          -p 1mn0td3f4ult          --server-add=192.168.10.11:8091          --server-add-username=administrator          --server-add-password=1mn0td3f4ult            --services=data,index,query
+==> node2: [2016-08-05T12:54:39+09:00] INFO: execute[joinging to cluster] ran successfully
+==> node2: [2016-08-05T12:55:38+09:00] INFO: execute[rebalancing cluster] ran successfully
+==> node2: [2016-08-05T12:55:38+09:00] INFO: Chef Run complete in 329.017866301 seconds
+==> node2: [2016-08-05T12:55:38+09:00] INFO: Skipping removal of unused files from the cache
+==> node2: [2016-08-05T12:55:38+09:00] INFO: Running report handlers
+==> node2: [2016-08-05T12:55:38+09:00] INFO: Report handlers complete
+stuff@StuffBook:~/ryanair/couchbasecluster$ 

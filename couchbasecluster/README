@@ -1,0 +1,31 @@
+Install and configure a two node couchbase cluster using Vagrant and Chef.
+
+### Dependencies apart from required ones ###
+
+chef-couchbase cookbook that allow adding a node to cluster. Source: https://github.com/dwashko/chef-couchbase
+vagrant-ohai cookbook modified from the original one to specify eth1 as the node['ipaddress'] instead of eth0. Source: https://github.com/tknerr/cookbooks-vagrant-ohai
+Every couchbase dependant cookbook included.
+
+### Details ##
+
+Vagrantfile created to generate multi vms, using chef solo for provisioning.
+Cookbook "couchbasenode" created to configure master node and secondary-n ones.
+Used CouchBase 4.0.0
+Used Chef 12.10.24
+Forwarded ports for testing, so cluster can be accessed via localhost:8091 or the assigned ip address (192.168.10.10 and 192.168.10.11) :8091
+Default admin username is administrator, password is 1mn0td3f4ult . Both specified on couchbasenode attributes file.
+Bucket created name is "first" which has a password that is "lm1815"
+
+### Run instructions ###
+
+cd couchbasecluster
+vagrant up
+
+### Workarounds ###
+
+- Had to avoid using latest chef version, it has a bug using it on vagrant, details on https://github.com/chef/chef/issues/4948
+- Had to use the modified vagrant-ohai cookbook, so every call to node['ipaddress'] on couchbase recipe used the correct one.
+- Forwarded ports for testing, so cluster can be accessed via localhost:8091 or the assigned ip address (192.168.10.10 and 192.168.10.11) :8091
+
+# Contact
+Matias Ozdy ( matiasozdy@gmail.com )
